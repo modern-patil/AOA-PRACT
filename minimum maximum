@@ -1,0 +1,41 @@
+TITLE: Write a program for finding the maximum and minimum elements from the given array of size ‘n’.
+
+Program:
+def min_max(arr, low, high):
+    if low == high:
+        mini = maxi = arr[low]
+        return mini, maxi
+    
+    if high == low + 1:
+        if arr[low] > arr[high]:
+            mini = arr[high]
+            maxi = arr[low]
+        else:
+            maxi = arr[high]
+            mini = arr[low]
+        return mini, maxi
+    
+    mid = (low + high) // 2
+    min_1, max_1 = min_max(arr, low, mid)
+    min_2, max_2 = min_max(arr, mid + 1, high)
+    
+    if min_1 < min_2:
+        mini = min_1
+    else:
+        mini = min_2
+    if max_1 > max_2:
+        maxi = max_1
+    else:
+        maxi = max_2
+    return mini, maxi
+    
+arr = [10, 20, 30, 40, 50]
+low = 0
+high = len(arr) - 1
+minimum, maximum = min_max(arr, low, high)
+print("Minimum Element:", minimum)
+print("Maximum Element:", maximum)
+
+Output:
+Minimum Element: 10
+Maximum Element: 50

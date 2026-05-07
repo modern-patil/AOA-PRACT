@@ -1,0 +1,84 @@
+Title : Find the Minimum cost spanning tree of a given connected undirected graph using prims Algorithm
+
+
+Program :
+
+def prims(graph,start):
+
+visited = set()
+
+mst = []
+
+edges = []
+
+
+visited.add(start)
+
+
+for neighbor , weight in graph[start]:
+
+edges.append((weight,start,neighbor))
+
+
+while edges :
+
+edges.sort()
+
+weight, u, v = edges.pop(0)
+
+
+if v not in visited:
+
+visited.add(v)
+
+mst.append((u,v,weight))
+
+
+#for newly visited node
+
+for neighbor, w in graph[v]:
+
+if neighbor not in visited:
+
+edges.append((w,v,neighbor))
+
+
+return mst
+
+
+graph = {
+
+'A' : [('B',1),('C',4)],
+
+'B' : [('A',1),('C',2),('D',5)],
+
+'C' : [('A',4),('B',2),('D',1)],
+
+'D' : [('B',5),('C',1)],
+
+}
+
+
+start = 'A'
+
+
+tot_cost = 0
+
+span_tree =prims(graph,start)
+
+
+for source, target , cost in span_tree:
+
+tot_cost += cost
+
+
+print("MST using Prim's Alogorithm is : ", span_tree)
+
+print("The cost of Minimum Spanning Tree i.e. MST using prim's Algorithm is : ",tot_cost)
+
+
+Output :
+
+MST using Prim's Alogorithm is : [('A', 'B', 1), ('B', 'C', 2), ('C', 'D', 1)]
+
+The cost of Minimum Spanning Tree i.e. MST using prim's Algorithm is : 4

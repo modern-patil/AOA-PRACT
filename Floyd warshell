@@ -1,0 +1,26 @@
+INF = float('inf')
+def floyd_warshall(graph):
+ n = len(graph)
+ dist = [[INF]*n for _ in range(n)]
+ for i in range(n):
+ dist[i][i] = 0
+ for j, w in graph[i]:
+ dist[i][j] = w
+ for k in range(n):
+ for i in range(n):
+ for j in range(n):
+ dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+ return dist
+graph = [
+ [(1, 3), (3, 7)],
+ [(0, 8), (2, 2)],
+ [(0, 5), (3, 1)],
+ [(0, 2)]
+]
+dist = floyd_warshall(graph)
+for row in dist:
+ print(["INF" if x == INF else x for x in row])
+if any(dist[i][i] < 0 for i in range(len(dist))):
+ print("Negative cycle detected!")
+else:
+ print("No negative cycle.")

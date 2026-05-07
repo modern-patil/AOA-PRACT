@@ -1,0 +1,51 @@
+Program: (For Sorting) def quick(arr): if len(arr) <= 1: return arr
+
+piv = arr[len(arr)//2] low = [n for n in arr if n< piv] mid = [n for n in arr if n == piv] high = [n for n in arr if n> return quick(low) + mid + quick(high)
+
+arr = [40, 10, 20, 20, 30, 5] print("Original Array: ", arr) res = quick(arr) print("Sorted Array: ", res)
+
+Output:
+
+Original Array: [40, 10, 20, 20, 30, 5] Sorted Array: [5, 10, 20, 20, 30, 40]
+
+Program: (For Analysis)
+
+import numpy as np import time
+
+def quick(arr):
+
+if len(arr) <=1:
+
+return ar
+
+piv = arr[len(arr)//2]
+
+low = [n for n in arr if n< piv]
+
+mid = [n for n in arr if n == piv)
+
+high = [n for n in arr if n> piv]
+
+retun quick(low) + mid + quick(high)
+
+def calc_time():
+
+best_time, avg_time, worst_time
+
+start = time.time()
+
+quick(sorted(arr, reverse=True)) worst_time = time.time()-start
+
+start = time.time() quick(arr)
+
+avg_time = time.time()-start
+
+start = time.time() quick(sorted(arr))
+
+best_time = time.time() - start
+
+randint (10, 500, 100000) best, avg, worst = calc_time() print("Best-Case Time Complexity:", best) print("Average-Case Time Complexity: ", avg) print("Worst-Case Time Complexity: ", worst)
+
+Output:
+
+Best-Case Time Complexity: 0.33847904205322266 Average-Case Time Complexity: 0.35605955123901367 Worst-Case Time Complexity: 0.39492368698120117
